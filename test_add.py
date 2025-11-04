@@ -1,7 +1,13 @@
 import pytest
 from add import add
 
-def test_add():
-    assert add(2, 3) == 5
-    assert add(1, 4) == 5
-    assert add(2, 4) == 5
+@pytest.mark.parametrize("a,b,expected", [
+    (2, 3, 5),
+    (-1, 1, 0),
+    (0, 0, 0),
+    (-5, -5, -10),
+    (2.5, 3.5, 6.0)
+])
+def test_add(a, b, expected):
+    assert add(a, b) == expected
+
